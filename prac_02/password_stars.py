@@ -6,13 +6,22 @@ Get password with minimum length and display asterisk
 MINIMUM = 3
 
 
-def get_password():
-    """Get password of valid length and display asterisks"""
-    password = input("Enter Password: ")
-    while len(password) < MINIMUM:
-        print(f"Password must be longer than {MINIMUM}")
-        password = input("Enter Password: ")
+def main():
+    password = get_password(MINIMUM)
+    display_asterisk(password)
+
+
+def display_asterisk(password):
     print("*" * len(password))
 
 
-get_password()
+def get_password(minimum_length):
+    """Get password of valid length and display asterisks"""
+    password = input("Enter Password: ")
+    while len(password) < minimum_length:
+        print(f"Password must be longer than {minimum_length}")
+        password = input("Enter Password: ")
+    return password
+
+
+main()
