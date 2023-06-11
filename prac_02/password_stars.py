@@ -7,11 +7,13 @@ MINIMUM = 3
 
 
 def main():
+    """Password check and display asterisk program"""
     password = get_password(MINIMUM)
     display_asterisk(password)
 
 
 def display_asterisk(password):
+    """Print asterisk depending on len of password"""
     print("*" * len(password))
 
 
