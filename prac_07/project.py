@@ -6,12 +6,15 @@ ACTUAL:
 
 
 class Project:
-    def __init__(self, name, start_date, priority, cost_estimate, completion_rate):
+    def __init__(self, name, start_date, cost_estimate, completion_rate, priority):
         self.name = name
         self.start_date = start_date
-        self.priority = priority
         self.cost_estimate = cost_estimate
         self.completion_rate = completion_rate
+        self.priority = priority
 
     def __lt__(self, other):
-        self.priority = other.year
+        return self.priority < other.year
+
+    def __str__(self):
+        return
