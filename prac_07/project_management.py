@@ -44,11 +44,21 @@ def main():
         else:
             print("Invalid menu choice")
         print(MENU)
-        choice = input(">>> ").upper()  # Overwrite and save places to csv file
+        choice = input(">>> ").upper()
     print("Thank you.")
 
 
-
+def update_projects(projects):
+    """Update existing functions completion rate and priority"""
+    for i, project in enumerate(projects):
+        print(i, project)
+    choice = int(input("Project choice: "))
+    new_percentage = input("New Percentage: ")
+    new_priority = input("New Priority: ")
+    if new_percentage != "":
+        projects[choice].completion_percentage = int(new_percentage)
+    if new_priority != "":
+        projects[choice].priority = int(new_priority)
 
 
 def add_project(projects):
