@@ -26,8 +26,9 @@ def main():
         if choice == "L":
             filename = input("Enter filename to load: ")
             projects = load_projects(filename)
-        elif choice == "R":
-            recommend_place(places)  # Recommends a random unvisited place
+        elif choice == "S":
+            filename = input("Enter filename to save to: ")
+            save_projects(filename, projects)
         elif choice == "A":
             add_new_place(places)  # Allow user to add new place
         elif choice == "M":
@@ -43,16 +44,25 @@ def load_projects(filename):
     """Load project from given file"""
     projects = []
     with open(filename, 'r') as file:
-        file.readlines()
+        file.readline()
         for line in file:
-            name, start_date, priority, cost_estimate, completion_percentage = line.strip().split('\t')
+            name, start_date, priority, cost_estimate, completion_rate = line.strip().split('\t')
             cost_estimate = float(cost_estimate)
-            completion_percentage = int(completion_percentage)
+            completion_rate = int(completion_rate)
             priority = int(priority)
-            project = Project(name, start_date, cost_estimate, completion_percentage, priority)
+            project = Project(name, start_date, cost_estimate, completion_rate, priority)
             projects.append(project)
+    print(f"Loaded {filename}")
     return projects
 
+
+def save_projects(filename, projects):
+    """Save projects to the given file"""
+    with open(filename, 'w') as file:
+        for project in projects:
+            file.write(f"{project.name}\t{project.start_date}\t{project.priority}\t"
+                       f"{project.cost_estimate}\t{project.completion_rate}\n")
+    print(f"Saved to {filename}")
 
 
 main()
