@@ -30,14 +30,52 @@ def main():
             filename = input("Enter filename to save to: ")
             save_projects(filename, projects)
         elif choice == "D":
-            display_projects(projects)  # Allow user to add new place
-        elif choice == "M":
-            mark_place(places)  # Mark place as visited
+            display_projects(projects)
+        elif choice == "F":
+            date_str = input("Enter the date to filter: ")
+            filter_by_date(projects, date_str)
+        elif choice == "F":
+            date_str = input("Enter the date to filter: ")
+            filter_by_date(projects, date_str)
+        elif choice == "A":
+            add_project(projects)
+        elif choice == "U":
+            update_projects(projects)
         else:
             print("Invalid menu choice")
         print(MENU)
         choice = input(">>> ").upper()  # Overwrite and save places to csv file
     print("Thank you.")
+
+
+
+
+
+def add_project(projects):
+    """Add a new project to the list"""
+    print("Lets add a new project")
+    name = input("Name: ")
+    start_date = input("Start date (dd/mm/yyyy): ")
+    priority = int(input("Priority: "))
+    cost_estimate = float(input("Cost estimate: "))
+    completion_rate = int(input("Percent complete: "))
+    project = Project(name, start_date, cost_estimate, completion_rate, priority)
+    projects.append(project)
+
+
+def filter_by_date(projects, date_str):
+    """Filter projects by given date"""
+    print(f"Enter Date (dd/mm/yyyy): {date_str}")
+    filtered_projects = []
+    for project in projects:
+        if project.start_date > date_str:
+            filtered_projects.append(project)
+    if filtered_projects:
+        for project in filtered_projects:
+            print(f"{project.name}, start: {project.start_date}, priority {project.priority}, "
+                  f"estimate: ${project.cost_estimate:.2f}, completion: {project.completion_rate}%")
+    else:
+        print("No projects found!")
 
 
 def display_projects(projects):
