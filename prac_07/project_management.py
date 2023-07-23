@@ -29,8 +29,8 @@ def main():
         elif choice == "S":
             filename = input("Enter filename to save to: ")
             save_projects(filename, projects)
-        elif choice == "A":
-            add_new_place(places)  # Allow user to add new place
+        elif choice == "D":
+            display_projects(projects)  # Allow user to add new place
         elif choice == "M":
             mark_place(places)  # Mark place as visited
         else:
@@ -38,6 +38,19 @@ def main():
         print(MENU)
         choice = input(">>> ").upper()  # Overwrite and save places to csv file
     print("Thank you.")
+
+
+def display_projects(projects):
+    """List incomplete and completed projects formatted"""
+    projects.sort()
+    print("Incomplete projects:")
+    incomplete_projects = [project for project in projects if project.completion_rate < 100]
+    for incomplete_project in incomplete_projects:
+        print(incomplete_project)
+    completed_projects = [project for project in projects if project.completion_rate >= 100]
+    print("Completed projects:")
+    for completed_project in completed_projects:
+        print(completed_project)
 
 
 def load_projects(filename):
