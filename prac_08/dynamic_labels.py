@@ -4,23 +4,25 @@ Arpisitt Numsri
 Convert miles to km program
 """
 
-
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
-from kivy.properties import StringProperty
 
 
 class NamesApp(App):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.names_list = ["Nina", "Henry", "Lily", "Hina"]
+
     def build(self):
+        """Build the Kivy GUI."""
+        self.title = "Dynamic Widgets"
         self.root = Builder.load_file('dynamic_labels.kv')
-        names = ["Nina, Henry, Lily, Hina"]
-        labels = BoxLayout(orientation='vertical')
-        for name in names:
-            label = Label(text=name)
-            labels.add_widget(label)
-        return labels
+        for name in self.names_list:
+            temp_label = Label(text=name)
+            self.root.ids.main.add_widget(temp_label)
+
+        return self.root
 
 
-NamesApp().run
+NamesApp().run()
