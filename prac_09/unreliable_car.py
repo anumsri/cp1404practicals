@@ -3,7 +3,7 @@ CP1404/CP5632 Practical
 Unreliable Car class
 """
 from prac_09.car import Car
-from random import random
+import random
 
 
 class UnreliableCar(Car):
@@ -18,6 +18,8 @@ class UnreliableCar(Car):
         random_number = random.randint(0, 100)
         if random_number > self.reliability:
             drive_distance = 0
-        distance = super().drive(drive_distance)
-        return distance
+        else:
+            drive_distance = distance
+        actual_distance = super().drive(drive_distance)
+        return actual_distance
 
