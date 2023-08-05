@@ -6,7 +6,9 @@ from prac_09.silver_service_taxi import SilverServiceTaxi
 
 
 def main():
-    my_taxi = SilverServiceTaxi("Silver Taxi", 60, 4)
-    my_taxi.drive(20)
+    my_taxi = SilverServiceTaxi("Silver Taxi", 100, 2)
+    my_taxi.drive(18)
+    print(my_taxi.get_fare())
     print(my_taxi)
-    # print(my_taxi.get_fare())
+
+main()
