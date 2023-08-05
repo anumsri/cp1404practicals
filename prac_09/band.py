@@ -2,9 +2,11 @@
 
 
 class Band:
-    """Band Class"""
+    """Band Class."""
 
     def __init__(self, name=""):
         self.name = name
         self.musicians
 
+    def __str__(self):
+        return f"{self.name} ({self.instruments})"
