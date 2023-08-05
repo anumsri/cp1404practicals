@@ -16,7 +16,9 @@ class SilverServiceTaxi(Taxi):
         self.price_per_km *= fanciness
 
     def __str__(self):
-        return f"{super().__str__()}"
+        """String representation of SilverServiceTaxi object."""
+        return f"{super().__str__()} plus flagfall of {self.flagfall}"
 
     def get_fare(self):
+        """Retrieve new fare with flagfall"""
         return self.flagfall + super().get_fare()
