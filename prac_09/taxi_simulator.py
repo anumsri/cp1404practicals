@@ -25,6 +25,8 @@ def main():
             current_taxi.start_fare()
             distance = float(input("Drive how far? "))
             current_taxi.drive(distance)
+            cost = current_taxi.get_fare()
+            print(f"Your {current_taxi.name} trip cost you ${cost:.2f}")
         else:
             print("Invalid choice")
         print(MENU)
