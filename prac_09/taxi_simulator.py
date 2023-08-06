@@ -15,14 +15,16 @@ def main():
                  SilverServiceTaxi("Hummer", 200, 4)]
     print("Let's drive!")
     print(MENU)
+    current_taxi = None
     choice = input(">>> ").lower()
     while choice != "q":
         if choice == "c":
             print("Taxis Available")
             display_taxis(taxi_list)
-
         elif choice == "d":
-            pass
+            current_taxi.start_fare()
+            distance = float(input("Drive how far? "))
+            current_taxi.drive(distance)
         else:
             print("Invalid choice")
         print(MENU)
@@ -33,6 +35,7 @@ def display_taxis(taxi_list):
     """Display taxi list nicely"""
     for i, taxi in enumerate(taxi_list):
         print(f"{i} - {taxi}")
+
 
 
 main()
