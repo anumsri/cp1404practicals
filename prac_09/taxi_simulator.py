@@ -16,17 +16,27 @@ def main():
     print("Let's drive!")
     print(MENU)
     current_taxi = None
+    total_cost = 0
     choice = input(">>> ").lower()
     while choice != "q":
         if choice == "c":
             print("Taxis Available")
             display_taxis(taxi_list)
+            taxi_choice = int(input("Choose taxi: "))
+            try:
+                current_taxi = taxi_list[taxi_choice]
+            except IndexError:
+                print("Invalid choice")
         elif choice == "d":
-            current_taxi.start_fare()
-            distance = float(input("Drive how far? "))
-            current_taxi.drive(distance)
-            cost = current_taxi.get_fare()
-            print(f"Your {current_taxi.name} trip cost you ${cost:.2f}")
+            if current_taxi:
+                current_taxi.start_fare()
+                distance = float(input("Drive how far? "))
+                current_taxi.drive(distance)
+                cost = current_taxi.start_fare()
+                print(f"Your {current_taxi.name} trip cost you ${cost:.2f}")
+                total_cost += cost
+            else:
+                print("You need to choose a taxi before you can drive")
         else:
             print("Invalid choice")
         print(MENU)
