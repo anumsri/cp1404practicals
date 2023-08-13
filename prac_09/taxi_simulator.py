@@ -39,6 +39,7 @@ def main():
                 print("You need to choose a taxi before you can drive")
         else:
             print("Invalid choice")
+        print("Bill to date: ${total_bill:.2f}")
         print(MENU)
         choice = input(">>> ").lower()
 
