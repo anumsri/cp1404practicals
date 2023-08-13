@@ -10,12 +10,11 @@ def main():
             break
 
         try:
-            page = wikipedia.page(user_input)
-            if page.exists():
-                print("Summary:")
-                print(page.summary)
-            else:
-                print("Not found")
+            page = wikipedia.page(user_input, auto_suggest=False)
+            print("Title: ", page.title)
+            print("Summary:")
+            print(page.summary)
+            print("URL= ", page.url)
         except wikipedia.exceptions.DisambiguationError as e:
             print(e.options)
 
